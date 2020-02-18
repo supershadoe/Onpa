@@ -1,0 +1,19 @@
+#!/bin/sh
+case "$1" in
+  start)
+    $0 stop 2>/dev/null
+    pactl load-module module-simple-protocol-tcp rate=48000 format=s16le channels=2 source=@DEFAULT_MONITOR@ record=true port=8000 && echo "Loaded the module"
+    ;;
+  stop)
+    pactl unload-module module-simple-protocol-tcp && echo "Unloaded the module"
+    ;;
+  *)
+    cat << EOF >&2
+$0 usage:
+    $0 start
+    (or)
+    $0 stop
+EOF
+    exit 1
+    ;;
+esac

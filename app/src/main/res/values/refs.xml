@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="play">@android:drawable/ic_media_play</drawable>
+    <drawable name="pause">@android:drawable/ic_media_pause</drawable>
+</resources>
