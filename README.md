@@ -3,12 +3,15 @@ This is an app to stream computer audio over LAN using Pulseaudio module `module
 This app aims to improve [PulseDroid](https://github.com/dront78/PulseDroid) app developed by @dront78.
 
 ## Changes done till now
-- Converted the app to material design.
+- Converted the app to material design and made slight changes in code.
+- Displays a numeric keypad by default(if the keyboard supports it) for easier typing.
 
 ## Installation
 Run the `install.sh` script in the root directory of the repo to install a small script called `pashare` in `/usr/local/bin` location. This script enables the pulseaudio module on running it.
 
 If you want to change the Monitor Source (if it doesn't work) or the port which `pashare` script by default sends audio via, open the script using vim or any other text editor and edit it.
+
+Default port in pashare is 8000
 
 Download the apk file of Onpa and install it to use it.
 Works on Android 5 (Lollipop) or higher.
