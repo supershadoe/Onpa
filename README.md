@@ -1,6 +1,6 @@
 # Onpa
 This is an app to stream computer audio over LAN using Pulseaudio module `module-simple-protocol-tcp`.
-This app aims to improve [https://github.com/dront78/PulseDroid](PulseDroid) app developed by @dront78.
+This app aims to improve [PulseDroid](https://github.com/dront78/PulseDroid) app developed by @dront78.
 
 ## Changes done till now
 - Converted the app to material design.
