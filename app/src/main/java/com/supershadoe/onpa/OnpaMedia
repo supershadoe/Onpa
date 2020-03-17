@@ -1,0 +1,147 @@
+package com.supershadoe.onpa;
+
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioFormat;
+import android.media.AudioManager;
+import android.media.AudioTrack;
+import android.os.Build;
+import android.os.IBinder;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.Socket;
+
+class OnpaMedia extends Service implements Runnable {
+    public static final String ACTION_PLAY = "action_play";
+    public static final String ACTION_STOP = "action_stop";
+
+    private String mServer;
+    private int mPort;
+
+    OnpaMedia(String server, String port) {
+        mServer = server;
+        mPort = Integer.valueOf(port);
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {return null;}
+
+    private void handleIntent(Intent intent) {
+        String action = intent.getAction();
+
+        if (action.equalsIgnoreCase("ACTION_PLAY"))
+        else if (action.equalsIgnoreCase("ACTION_STOP"))
+    }
+
+    private Notification.Action generateAction(int icon, String title, String intentAction) {
+        Intent intent = new Intent(getApplicationContext(), OnpaMedia.class);
+        intent.setAction(intentAction);
+        PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 1, intent, 0);
+        return new Notification.Action.Builder(icon, title, pendingIntent).build();
+    }
+
+    private void buildNotification(Notification.Action action) {
+        Notification.MediaStyle style = new Notification.MediaStyle();
+        Intent intent = new Intent(getApplicationContext(), OnpaMedia.class);
+        intent.setAction(ACTION_STOP);
+        PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 1, intent, 0);
+        Notification.Builder builder = new Notification.Builder(this)
+                .setSmallIcon(R.drawable.ic_notif)
+                .setContentTitle("Streaming computer audio")
+                .setContentText("Onpa")
+                .setDeleteIntent(pendingIntent)
+                .setStyle(style);
+        builder.addAction(generateAction(R.drawable.stop, "Stop", ACTION_STOP));
+        builder.addAction(action);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            builder.setPriority(Notification.PRIORITY_LOW);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(1, builder.build());
+        }
+        style.setShowActionsInCompactView(0,1,2,3,4);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String channelId = "onpa-notify";
+            String notifName = "Streaming";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel(channelId, notifName, importance);
+            channel.setDescription("Shows if audio is being streamed");
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(channel);
+            notificationManager.notify(1, builder.build());
+        }
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if () {
+            run();
+        }
+
+        handleIntent(intent);
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        mSession.release();
+        return super.onUnbind(intent);
+    }
+
+    void Terminate() {mTerminate = true;}
+
+    @Override
+    public void run() {
+            Socket sock = null;
+            BufferedInputStream audioData = null;
+            try {
+                sock = new Socket(mServer, mPort);
+            } catch (IOException | SecurityException e) {
+                Terminate();
+                e.printStackTrace();
+            }
+
+            if (!mTerminate) {
+                try {
+                    audioData = new BufferedInputStream(sock.getInputStream());
+                } catch (IOException e) {
+                    Terminate();
+                    e.printStackTrace();
+                }
+            }
+
+            final int sampleRate = 48000;
+
+            int musicLength = AudioTrack.getMinBufferSize(sampleRate,
+                    AudioFormat.CHANNEL_OUT_STEREO,
+                    AudioFormat.ENCODING_PCM_16BIT);
+            AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
+                    sampleRate, AudioFormat.CHANNEL_OUT_STEREO,
+                    AudioFormat.ENCODING_PCM_16BIT, musicLength,
+                    AudioTrack.MODE_STREAM);
+            audioTrack.play();
+
+            byte[] audioBuffer = new byte[musicLength * 8];
+
+            while (!mTerminate) {
+                try {
+                    int sizeRead = audioData.read(audioBuffer, 0, musicLength * 8);
+                    int sizeWrite = audioTrack.write(audioBuffer, 0, sizeRead);
+                    if (sizeWrite == AudioTrack.ERROR_INVALID_OPERATION || sizeWrite == AudioTrack.ERROR_BAD_VALUE) {
+                        sizeWrite = 0;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            audioTrack.stop();
+            sock = null;
+            audioData = null;
+    }
+}

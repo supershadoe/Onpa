@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App colors for dark mode-->
+    <color name="colorPrimary">#B2121212</color>
+    <color name="colorStatus">#B2121212</color>
+    <color name="colorAccent">#03BAC5</color>
+
+    <!-- Text colors for dark mode-->
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#B2FFFFFF</color>
+    <color name="textDisabled">#80FFFFFF</color>
+
+</resources>
