@@ -12,7 +12,7 @@ case "$x" in
 		sudo chmod a+x /usr/local/bin/pashare
 		;;
 	su)
-		su -c "mv ./pashare /usr/local/bin/pashare && chmod a+x /usr/local/bin/ytmp"
+		su -c "mv ./pashare /usr/local/bin/pashare && chmod a+x /usr/local/bin/pashare"
 		;;
 	man)
 		read -p "Enter the install directory: " y
