@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Array for dayNight preference(entries) -->
+    <string-array name="dayNight_entries">
+        <item>@string/dayNight_follow_system</item>
+        <item>@string/dayNight_light</item>
+        <item>@string/dayNight_dark</item>
+        <item>@string/dayNight_dark_battery_saver</item>
+    </string-array>
+
+    <!-- Array for dayNight preference(entryValue) -->
+    <string-array name="dayNight_values">
+        <item>-1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+</resources>

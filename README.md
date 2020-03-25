@@ -1,8 +1,17 @@
 # Onpa
 This is an app to stream computer audio over LAN using Pulseaudio module `module-simple-protocol-tcp`.
-This app aims to improve [PulseDroid](https://github.com/dront78/PulseDroid) app developed by @dront78.
 
 ## Changes done till now
+Version 2.0
+- Added support for dark mode.
+- Port is set to 8000 by default and port is now set from settings.
+- Kotlinization of code.
+- Added a help view which helps new users to figure out things.
+- Redesign of app and icon.
+- Added wakelock support to enable Onpa to play audio even when the screen is off.
+
+Version 1.0
+
 - Converted the app to material design and made slight changes in code.
 - Displays a numeric keypad by default(if the keyboard supports it) for easier typing.
 
@@ -15,3 +24,10 @@ Default port in pashare is 8000
 
 Download the apk file of Onpa and install it to use it.
 Works on Android 5 (Lollipop) or higher.
+
+## License
+This app is licensed under the GNU GPL v3.0
+For more details, read the LICENSE file present along with the files.
+
+## Credits
+@dront78 - Inspiration for this app(Version 1 was made from his app [PulseDroid](https://github.com/dront78/pulsedroid))

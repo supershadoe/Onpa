@@ -1,0 +1,79 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/supershadoe/Projects/Onpa/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "map": [
+                {
+                    "source": "/home/supershadoe/.gradle/caches/transforms-2/files-2.1/5c06b4c920bade8b263672a626e753be/material-1.1.0/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,143,267,369,471,587,689,803,931,1047,1169,1305,1425,1559,1679,1791,1917,2055,2179,2309,2431,2569,2685",
+                        "endColumns": "87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,137,123,129,121,137,115,119",
+                        "endOffsets": "138,262,364,466,582,684,798,926,1042,1164,1300,1420,1554,1674,1786,1912,2050,2174,2304,2426,2564,2680,2800"
+                    },
+                    "to": {
+                        "startLines": "26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1581,1669,1793,1895,1997,2113,2215,2329,2457,2573,2695,2831,2951,3085,3205,3317,3532,3670,3794,3924,4046,4184,4300",
+                        "endColumns": "87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,137,123,129,121,137,115,119",
+                        "endOffsets": "1664,1788,1890,1992,2108,2210,2324,2452,2568,2690,2826,2946,3080,3200,3312,3438,3665,3789,3919,4041,4179,4295,4415"
+                    }
+                },
+                {
+                    "source": "/home/supershadoe/Projects/Onpa/app/src/main/res/values-night/styles.xml",
+                    "from": {
+                        "startLines": "2,11,7,12",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "17,446,296,541",
+                        "endLines": "6,11,10,12",
+                        "endColumns": "12,94,12,83",
+                        "endOffsets": "291,536,441,620"
+                    },
+                    "to": {
+                        "startLines": "8,13,14,18",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "343,622,716,866",
+                        "endLines": "12,13,17,18",
+                        "endColumns": "12,93,12,82",
+                        "endOffsets": "617,711,861,944"
+                    }
+                },
+                {
+                    "source": "/home/supershadoe/Projects/Onpa/app/src/main/res/values-night/colors.xml",
+                    "from": {
+                        "startLines": "6,4,5,11,9,10",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "190,93,142,371,275,321",
+                        "endColumns": "45,48,47,48,45,49",
+                        "endOffsets": "231,137,185,415,316,366"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,101,150,198,247,293",
+                        "endColumns": "45,48,47,48,45,49",
+                        "endOffsets": "96,145,193,242,288,338"
+                    }
+                },
+                {
+                    "source": "/home/supershadoe/.gradle/caches/transforms-2/files-2.1/5988781b109aa2e81ee2deed8375ae92/appcompat-1.1.0/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,687",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,771"
+                    },
+                    "to": {
+                        "startLines": "19,20,21,22,23,24,25,42",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "949,1019,1103,1187,1283,1385,1487,3443",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "1014,1098,1182,1278,1380,1482,1576,3527"
+                    }
+                }
+            ]
+        }
+    ]
+}
