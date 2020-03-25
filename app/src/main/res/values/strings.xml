@@ -3,6 +3,7 @@
     <string name="app_name">Onpa</string>
     <string name="ip">IP Address</string>
     <string name="ip_single">IP Address\nof the server</string>
+    <string name="ip_sBar">Please fill in the IP Address.</string>
     <string name="port">Port</string>
     <string name="settings">Settings</string>
     <string name="help">Help</string>
@@ -13,9 +14,8 @@
 
     <!-- Port preferences -->
     <string name="port_title">Default port</string>
-    <!-- string name="port_summary">Set the default port to connect to</string -->
-    <string name="manual_port_title">Set port manually</string>
-    <string name="manual_port_summary">Enable this to set the port manually every time you connect.</string>
+    <string name="port_empty_sBar">Port number can\'t be empty.</string>
+    <string name="port_change_sBar">Please restart the playback for the changes to take effect.</string>
 
     <!-- UI preferences -->
     <string name="dayNight_title">Dark mode setting</string>
@@ -30,13 +30,12 @@
     <string name="help_content_title"><![CDATA[<h1 style="text-align: center">Onpa: Help</h1>]]></string>
     <string name="help_content_body"><![CDATA[
         <font size="4pt">
-            <p>This app can <b>stream</b> audio from your linux PC using <i>PulseAudio</i>(a sound system which makes Linux PCs capable of playing audio) and also make your device act as a <b>microphone</b> for your PC.</p>
-            <p>To stream audio or record audio, first <b>enable the PulseAudio module</b> by running the shell script(called <b>pashare</b>) provided along with the app.(Download it from <a href="https://github.com/supershadoe/onpa">this website</a> if you don\'t have it)</p>
+            <p>This app can <b>stream</b> audio from your linux PC using <i>PulseAudio</i>(a sound system which makes Linux PCs capable of playing audio).</p>
+            <p>To stream audio, first <b>enable the PulseAudio module</b> by running the shell script(called <b>pashare</b>) provided along with the app.(Download it from <a href="https://github.com/supershadoe/onpa">this website</a> if you don\'t have it)</p>
             <p>Next, go back to the main view of this app and enter your computer\'s <b>local IP</b> address. As it is assumed that you will be using the shell script from my repository, the default port to connect to is set to <b>8000</b>. But, if you want to connect via some other port for any reason, you can change the port the script uses by opening pashare script in a text editor and editing the port argument and set the default port used to the same port number in the app settings.</p>
-            <p>After entering the IP address, click on the <b>play</b> button or the <b>mic</b> button to play or record audio respectively.</p>
-            <p>To stop streaming or recording audio, press the <b>stop</b> button.</p>
-            <p>If for some reason, you want to set the port number manually every time you connect to the audio server(the computer streaming the audio), enable the <b>"Set Port Manually"</b> option in the app settings.</p>
-            <p>Normally, dark mode is set to be the default one but if you want to use light mode or make the app follow system\'s dark mode settings or enable dark mode only when battery saver is on, change the dark mode setting in the app settings.</p>
+            <p>After entering the IP address, click on the <b>play</b> button to play audio.</p>
+            <p>To stop streaming audio, press the <b>stop</b> button.</p>
+            <p>Normally, the app is set to follow the phone\'s dark mode settings but if you want to use light mode or dark mode all time or enable dark mode only when battery saver is on, change the dark mode setting in the app settings.</p>
         </font>
     ]]></string>
     <string name="help_content_license"><![CDATA[<p>This app is released under the <b><i>GNU General Public License v3.0</i></b><br />]]></string>

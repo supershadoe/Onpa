@@ -2,7 +2,7 @@
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.supershadoe.onpa"
 4    android:versionCode="2"
-5    android:versionName="test-20" >
+5    android:versionName="test-25" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"

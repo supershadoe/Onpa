@@ -5,21 +5,19 @@ import android.media.AudioFormat
 import android.media.AudioManager
 import android.media.AudioTrack
 import android.os.Build
-import java.io.BufferedInputStream
 import java.io.IOException
+import java.io.InputStream
 import java.net.Socket
 
-internal class Playback(private val mServer: String, Port: String, audioManager: AudioManager) : Runnable {
+internal class Playback(private val mServer: String, private val mPort: Int, private val mAudioManager: AudioManager): Runnable {
     private var mTerminate: Boolean = false
-    private val mPort: Int = Port.toInt()
-    private val mAudioManager: AudioManager = audioManager
     fun terminate() {
         mTerminate = true
     }
 
     override fun run() {
         var sock: Socket? = null
-        var audioData: BufferedInputStream? = null
+        var audioData: InputStream? = null
         try {
             sock = Socket(mServer, mPort)
         } catch (e: IOException) {
@@ -31,7 +29,7 @@ internal class Playback(private val mServer: String, Port: String, audioManager:
         }
         if (!mTerminate) {
             try {
-                audioData = BufferedInputStream(sock!!.getInputStream())
+                audioData = sock!!.getInputStream()
             } catch (e: IOException) {
                 terminate()
                 e.printStackTrace()

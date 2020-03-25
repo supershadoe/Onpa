@@ -3,7 +3,7 @@
     package="com.supershadoe.onpa"
     android:targetSandboxVersion="2"
     android:versionCode="2"
-    android:versionName="test-20" >
+    android:versionName="test-25" >
 
     <uses-sdk
         android:minSdkVersion="21"

@@ -874,6 +874,7 @@ color foreground_material_dark
 color foreground_material_light
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color ic_launcher_background
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -1423,18 +1424,14 @@ drawable ic_edit_black_24dp
 drawable ic_help_24px
 drawable ic_keyboard_arrow_left_black_24dp
 drawable ic_keyboard_arrow_right_black_24dp
-drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_menu_arrow_down_black_24dp
 drawable ic_menu_arrow_up_black_24dp
-drawable ic_mic_24px
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
-drawable ic_notif
 drawable ic_settings_24px
-drawable ic_star_border_24px
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down
@@ -1471,7 +1468,6 @@ id FUNCTION
 id Ipaddr
 id META
 id Play
-id Record
 id SHIFT
 id SYM
 id TOP_END
@@ -2000,9 +1996,8 @@ string help_content_title
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string ip
+string ip_sBar
 string ip_single
-string manual_port_summary
-string manual_port_title
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_suffix
@@ -2044,6 +2039,8 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string port
+string port_change_sBar
+string port_empty_sBar
 string port_header
 string port_title
 string preference_copied
