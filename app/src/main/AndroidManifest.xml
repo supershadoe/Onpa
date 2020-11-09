@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.supershadoe.onpa">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    <application
-        android:allowBackup="true"
+    <application android:label="@string/app_name"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".Settings"
-            android:label="@string/settings" />
-        <activity
-            android:name=".Help"
-            android:label="@string/help" />
-        <activity
-            android:name=".Onpa"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <activity android:name=".Settings"
+            android:label="@string/settings">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.mikepenz.aboutlibraries.ui.LibsActivity"
+            android:theme="@style/AppTheme.AboutLibraries"/>
+
+        <service android:name=".PlayTile"
+            android:icon="@drawable/ic_qs_icon"
+            android:label="@string/qs_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

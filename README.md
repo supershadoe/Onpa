@@ -1,33 +1,66 @@
-# Onpa
-This is an app to stream computer audio over LAN using Pulseaudio module `module-simple-protocol-tcp`.
+<p align="center"><img src="assets/onpa.png" width="100" style="border-radius:50%"/></p>
+<h2 align="center"><b>Onpa</b></h2>
+<h3 align="center"><b>Version 3.0</b></h2>
+<h4 align="center">App to stream computer audio to phone over LAN.</h4>
 
-## Changes done till now
+<p align="center">
+<a href="https://github.com/supershadoe/Onpa/releases" alt="Github releases"><img src="https://img.shields.io/badge/Version-v3.0-gold"/></a>
+<a href="https://github.com/supershadoe/Onpa/releases/download/v3.0/Onpa.apk" alt="Latest APK"><img src="https://img.shields.io/badge/Latest%20APK-v3.0-brightgreen"/></a>
+<a href="http://apache.org/licenses/LICENSE-2.0" alt="License: Apache"><img src="https://img.shields.io/badge/License-Apache%202.0-blue"/></a>
+</p>
+<hr />
+
+## Description
+This is an app to stream computer audio over LAN using PulseAudio module `module-simple-protocol-tcp`.
+This app works on Android 7.0(Nougat) and above.
+People with android versions less than 7 can use the [old version](https://github.com/supershadoe/Onpa/releases/download/v2.0/Onpa.apk) of the app.
+
+## How to use
+Phone-side:
+  - After installing the APK, add the quick setting tile from the menu.
+  - Long press the tile to open settings.
+  - Set the IP address, port number, sample rate and Mono/Stereo setting in settings.
+  - Tap the tile to play/pause playback.
+
+PC side:
+  - Place the `pashare` script in some folder in PATH(/usr/bin, /usr/local/bin or some other folder)
+  - Set the port and sample rate in `pashare` script.(It's 8000 and 48000Hz by default)
+  - Give `pashare start` to start streaming audio and `pashare stop` to stop streaming audio.
+  
+## Changelog
+Version 3.0
+- Revamped and a more easier to use UI.
+  There is no app in menu now. Only exists as a quick settings tile.
+- App listens to audio focus so pauses playback when another app starts playing audio.
+- Reduced lag in audio.
+- Uses wakelock and wifilock to see to that the playback doesn't stop
+
+  Code-wise:
+  - Code is documented well and has comments for most of the documents.
+  - Instead of having the main activity play/pause, PlayTile service does it.
+  - Removed most of the useless/old files.
+  - Uses proguard to shrink resources so that the app is smaller in size.
+
 Version 2.0
 - Added support for dark mode.
 - Port is set to 8000 by default and port is now set from settings.
-- Kotlinization of code.
 - Added a help view which helps new users to figure out things.
 - Redesign of app and icon.
-- Added wakelock support to enable Onpa to play audio even when the screen is off.
+
+  Code-wise:
+  - Kotlinization of code.
+  - Added wakelock support to enable Onpa to play audio even when the screen is off.(Doesn't work)
 
 Version 1.0
-
 - Converted the app to material design and made slight changes in code.
 - Displays a numeric keypad by default(if the keyboard supports it) for easier typing.
 
-## Installation
-Run the `install.sh` script in the root directory of the repo to install a small script called `pashare` in `/usr/local/bin` location. This script enables the pulseaudio module on running it.
+## Bugs and PRs
+People are invited to file bug reports and make PRs.
 
-If you want to change the Monitor Source (if it doesn't work) or the port which `pashare` script by default sends audio via, open the script using vim or any other text editor and edit it.
-
-Default port in pashare is 8000
-
-Download the apk file of Onpa and install it to use it.
-Works on Android 5 (Lollipop) or higher.
+## App updates
+App can be updated by downloading APKs from the [Releases](https://www.github.com/supershadoe/Onpa/releases) page in GitHub.
 
 ## License
-This app is licensed under the GNU GPL v3.0
-For more details, read the LICENSE file present along with the files.
-
-## Credits
-@dront78 - Inspiration for this app(Version 1 was made from his app [PulseDroid](https://github.com/dront78/pulsedroid))
+This app is licensed under Apache License, Version 2.0.
+A copy of this license can be found in the [LICENSE](https://raw.githubusercontent.com/supershadoe/Onpa/master/LICENSE) file.

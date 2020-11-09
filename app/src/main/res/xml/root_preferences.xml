@@ -1,45 +1,57 @@
-<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:id="@+id/ui_head"
+        android:id="@+id/audio_category"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:title="@string/ui_header"
-        tools:visibility="visible"
+        android:title="@string/audio_category"
         app:iconSpaceReserved="false">
 
-        <ListPreference
-            android:id="@+id/dayNight_pref"
+        <EditTextPreference
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:defaultValue="-1"
-            android:entries="@array/dayNight_entries"
-            android:entryValues="@array/dayNight_values"
-            android:key="dayNight_pref"
-            android:summary="%s"
-            android:title="@string/dayNight_title"
+            android:defaultValue="0.0.0.0"
+            android:inputType="number"
+            android:key="ip_pref"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/ip_pref"
             app:iconSpaceReserved="false" />
-    </PreferenceCategory>
-    <PreferenceCategory
-        android:id="@+id/port_head"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:title="@string/port_header"
-        tools:visibility="visible"
-        app:iconSpaceReserved="false" >
+
         <EditTextPreference
-            android:id="@+id/port_def"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:defaultValue="8000"
             android:inputType="number"
-            android:key="port_def"
+            android:key="port_pref"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="@string/port_title"
+            android:title="@string/port_pref"
             app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:defaultValue="48000"
+            android:inputType="number"
+            android:key="sample_rate_pref"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/sample_rate_pref"
+            app:iconSpaceReserved="false" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="stereo_pref"
+            android:title="@string/stereo_pref"
+            app:iconSpaceReserved="false" />
+
     </PreferenceCategory>
+
+    <Preference
+        android:key="about_pref"
+        android:title="@string/about_pref"
+        app:iconSpaceReserved="false"
+        app:allowDividerAbove="true" />
 
 </PreferenceScreen>

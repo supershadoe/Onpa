@@ -4,10 +4,10 @@
     <!-- App colors for dark mode-->
     <color name="colorPrimary">#B2121212</color>
     <color name="colorStatus">#B2121212</color>
-    <color name="colorAccent">#03BAC5</color>
+    <color name="colorAccent">#FF03BAC5</color>
 
     <!-- Text colors for dark mode-->
-    <color name="textPrimary">#FFFFFF</color>
+    <color name="textPrimary">#FFFFFFFF</color>
     <color name="textSecondary">#B2FFFFFF</color>
     <color name="textDisabled">#80FFFFFF</color>
 

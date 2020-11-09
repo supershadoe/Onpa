@@ -4,17 +4,7 @@
             "outputFile": "/home/supershadoe/Projects/Onpa/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/home/supershadoe/.gradle/caches/transforms-2/files-2.1/5988781b109aa2e81ee2deed8375ae92/appcompat-1.1.0/res/values-v24/values-v24.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,212",
-                        "endColumns": "156,134",
-                        "endOffsets": "207,342"
-                    }
-                },
-                {
-                    "source": "/home/supershadoe/.gradle/caches/transforms-2/files-2.1/13ec772b2a549fa2e056ca3685a4747b/media-1.0.0/res/values-v24/values-v24.xml",
+                    "source": "/home/supershadoe/.gradle/caches/transforms-2/files-2.1/0e457b388334cc894d8bbb60ad15753b/media-1.1.0/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -28,6 +18,16 @@
                         "startOffsets": "347,413,474,540",
                         "endColumns": "65,60,65,66",
                         "endOffsets": "408,469,535,602"
+                    }
+                },
+                {
+                    "source": "/home/supershadoe/.gradle/caches/transforms-2/files-2.1/3561acc100a7ebf5e5d0a67ed51a9948/appcompat-1.2.0/res/values-v24/values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
                     }
                 }
             ]

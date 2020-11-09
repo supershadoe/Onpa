@@ -2,13 +2,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintSettings"
+    android:id="@+id/settingsScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Settings">
 
     <FrameLayout
-        android:id="@+id/settings"
+        android:id="@+id/settingsFrame"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/attrib_settings"

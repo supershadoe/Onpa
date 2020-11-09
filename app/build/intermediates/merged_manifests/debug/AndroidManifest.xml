@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.supershadoe.onpa"
-    android:versionCode="2"
-    android:versionName="test-25" >
+    android:versionCode="3"
+    android:versionName="3.0" >
 
     <uses-sdk
-        android:minSdkVersion="21"
-        android:targetSdkVersion="29" />
+        android:minSdkVersion="24"
+        android:targetSdkVersion="30" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
+        android:extractNativeLibs="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -25,20 +24,24 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.supershadoe.onpa.Settings"
-            android:label="@string/settings" />
-        <activity
-            android:name="com.supershadoe.onpa.Help"
-            android:label="@string/help" />
-        <activity
-            android:name="com.supershadoe.onpa.Onpa"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:label="@string/settings" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.mikepenz.aboutlibraries.ui.LibsActivity"
+            android:theme="@style/AppTheme.AboutLibraries" />
+
+        <service
+            android:name="com.supershadoe.onpa.PlayTile"
+            android:icon="@drawable/ic_qs_icon"
+            android:label="@string/qs_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" >
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

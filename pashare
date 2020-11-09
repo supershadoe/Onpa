@@ -1,8 +1,14 @@
 #!/bin/sh
+# Change this to change the port number to use
+port_num=8000
+# Change this to 1 for Mono
+channels=2
+# Change this to change the sample rate(in hertz)
+sample_rate=48000
 case "$1" in
   start)
     $0 stop 2>/dev/null
-    pactl load-module module-simple-protocol-tcp rate=48000 format=s16le channels=2 source=@DEFAULT_MONITOR@ record=true port=8000 && echo "Loaded the module"
+    pactl load-module module-simple-protocol-tcp rate=$sample_rate format=s16le channels=$channels source=@DEFAULT_MONITOR@ record=false port=$port_num && echo "Loaded the module"
     ;;
   stop)
     pactl unload-module module-simple-protocol-tcp && echo "Unloaded the module"
