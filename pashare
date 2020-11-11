@@ -8,7 +8,7 @@ sample_rate=48000
 case "$1" in
   start)
     $0 stop 2>/dev/null
-    pactl load-module module-simple-protocol-tcp rate=$sample_rate format=s16le channels=$channels source=@DEFAULT_MONITOR@ record=false port=$port_num && echo "Loaded the module"
+    pactl load-module module-simple-protocol-tcp rate=$sample_rate format=s16le channels=$channels source=@DEFAULT_MONITOR@ playback=false record=true port=$port_num && echo "Loaded the module"
     ;;
   stop)
     pactl unload-module module-simple-protocol-tcp && echo "Unloaded the module"
