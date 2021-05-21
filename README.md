@@ -68,7 +68,8 @@ PC side:
 - Displays a numeric keypad by default(if the keyboard supports it) for easier typing.
 
 ## Bugs and PRs
-People are welcome to file bug reports and make PRs.
+No more updates will be made.
+So, if you want any changes/improvements, you can do so by cloning/forking the repo.
 
 ## App updates
 App can be updated by downloading APKs from the [Releases](https://www.github.com/supershadoe/Onpa/releases) page in GitHub.
