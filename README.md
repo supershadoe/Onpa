@@ -12,7 +12,9 @@
 
 ## Description
 This is an app to stream computer audio over LAN using PulseAudio module `module-simple-protocol-tcp`.
+
 This app works on Android 7.0(Nougat) and above.
+
 People with android versions less than 7 can use the [old version](https://github.com/supershadoe/Onpa/releases/download/v2.0/Onpa.apk) of the app.
 
 ## How to use

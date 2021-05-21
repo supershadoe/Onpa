@@ -14,12 +14,12 @@ case "$1" in
     pactl unload-module module-simple-protocol-tcp && echo "Unloaded the module"
     ;;
   *)
-    appname=$(basename $0)
+    app_name=$(basename "$0")
     cat << EOF >&2
-$appname usage:
-    $appname start
+$app_name usage:
+    $app_name start
     (or)
-    $appname stop
+    $app_name stop
 EOF
     exit 1
     ;;
