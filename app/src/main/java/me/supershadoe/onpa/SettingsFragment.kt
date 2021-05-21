@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (C) 2020 supershadoe
+ * Copyright (C) 2021 supershadoe
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,12 @@
  *
  */
 
-package com.supershadoe.onpa
+package me.supershadoe.onpa
 
 import android.os.Bundle
-import android.service.quicksettings.Tile
-import android.service.quicksettings.TileService
 import android.text.TextUtils
 
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.EditTextPreference
-import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference

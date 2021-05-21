@@ -6,11 +6,6 @@
     <color name="colorStatus">#FF3F51B5</color>
     <color name="colorAccent">#FFD81B60</color>
 
-    <!-- Text colors for light mode -->
-    <color name="textPrimary">#DE000000</color>
-    <color name="textSecondary">#8A000000</color>
-    <color name="textDisabled">#61000000</color>
-
     <!-- App Logo background color -->
     <color name="logoBg">#FFFCFCEC</color>
 

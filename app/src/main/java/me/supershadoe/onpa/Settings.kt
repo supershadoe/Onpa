@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (C) 2020 supershadoe
+ * Copyright (C) 2021 supershadoe
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,12 @@
  *
  */
 
-package com.supershadoe.onpa
+package me.supershadoe.onpa
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import me.supershadoe.onpa.databinding.ActivitySettingsBinding
 
 /**
  * Settings Activity
@@ -39,12 +40,13 @@ class Settings : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
         // Loads the view from layout XML
-        setContentView(R.layout.activity_settings)
+        val binding = ActivitySettingsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Replaces settingsFrame with PlayFragment
         supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.settingsFrame, SettingsFragment())
+                .replace(binding.settingsFrame.id, SettingsFragment())
                 .commit()
     }
 }

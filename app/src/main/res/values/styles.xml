@@ -6,15 +6,6 @@
         <item name="android:statusBarColor">@color/colorStatus</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.DayNight" />
-    <style name="AppTheme.MaterialComponents" parent="Theme.MaterialComponents.DayNight" />
-
     <style name="AppTheme.AboutLibraries" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 
 </resources>
