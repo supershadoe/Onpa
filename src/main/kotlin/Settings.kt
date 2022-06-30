@@ -21,7 +21,6 @@ package me.supershadoe.onpa
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import me.supershadoe.onpa.databinding.ActivitySettingsBinding
 
 /**
  * Settings Activity
@@ -40,13 +39,12 @@ class Settings : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
         // Loads the view from layout XML
-        val binding = ActivitySettingsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_settings)
 
         // Replaces settingsFrame with PlayFragment
         supportFragmentManager
                 .beginTransaction()
-                .replace(binding.settingsFrame.id, SettingsFragment())
+                .replace(R.id.settingsFrame, SettingsFragment())
                 .commit()
     }
 }

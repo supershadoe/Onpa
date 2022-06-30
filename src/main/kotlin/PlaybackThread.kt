@@ -23,6 +23,7 @@ import android.media.AudioFormat
 import android.media.AudioManager
 import android.media.AudioTrack
 import android.os.Build
+import android.util.Log
 
 import java.io.IOException
 import java.io.InputStream
@@ -94,15 +95,19 @@ internal class PlaybackThread(
         var sock: Socket? = null
         var audioData: InputStream? = null
         val audioBuffer = ByteArray(minBufSize * 8)
+        Log.i("Onpa", "Called")
         try {
             // Try to create a socket to the server with the given IP Address using the provided port
             sock = Socket(ipAddress, port)
+            Log.d("Onpa-pt", sock.toString())
         } catch (e: ConnectException) {
             // Connection refused
+            Log.d("Onpa-pt", ipAddress)
             terminate()
             e.printStackTrace()
         } catch (e: IOException) {
             // Error while creating a socket
+            Log.d("Onpa-pt", ipAddress)
             terminate()
             e.printStackTrace()
         } catch (e: SecurityException) {

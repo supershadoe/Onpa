@@ -22,12 +22,10 @@ import android.os.Bundle
 import android.text.TextUtils
 
 import androidx.preference.EditTextPreference
-import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 
 import com.google.android.material.snackbar.Snackbar
-import com.mikepenz.aboutlibraries.LibsBuilder
 
 /**
  * Fragment which loads the settings from XML into the view
@@ -119,22 +117,4 @@ class SettingsFragment : PreferenceFragmentCompat() {
         }
     }
 
-    /**
-     * onPreferenceTreeClick function: Function which responds to clicks on preferences
-     * @param preference(Preference) The preference which was clicked
-     * @return Boolean Value to denote if the preference click was handled by it or not
-     */
-    override fun onPreferenceTreeClick(preference: Preference?): Boolean {
-        if(preference?.key == "about_pref") {
-            val aboutActivity = LibsBuilder()
-            aboutActivity.showLicense = true
-            aboutActivity.aboutAppName = getString(R.string.app_name)
-            aboutActivity.activityTitle = getString(R.string.about_pref)
-            aboutActivity.aboutShowIcon = true
-            aboutActivity.showVersion = true
-            aboutActivity.aboutDescription = getString(R.string.about_app_description)
-            aboutActivity.start(requireActivity())
-        }
-        return super.onPreferenceTreeClick(preference)
-    }
 }

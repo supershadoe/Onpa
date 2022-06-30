@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="me.supershadoe.onpa">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application android:label="@string/app_name"
-        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/AppTheme"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        tools:ignore="UnusedAttribute">
 
         <activity android:name=".Settings"
-            android:label="@string/settings">
+            android:label="@string/settings"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
@@ -25,7 +29,8 @@
         <service android:name=".PlayTile"
             android:icon="@drawable/ic_qs_icon"
             android:label="@string/qs_label"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>

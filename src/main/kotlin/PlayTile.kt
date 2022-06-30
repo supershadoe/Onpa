@@ -28,6 +28,7 @@ import android.os.Build
 import android.os.PowerManager
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
+import android.util.Log
 import androidx.preference.PreferenceManager
 
 /**
@@ -62,6 +63,7 @@ class PlayTile: TileService(), AudioManager.OnAudioFocusChangeListener {
      *                            AudioFocusChangeListener
      * @param getOrGiveUp(Boolean) AudioFocus is gained or given up if the value is true or false respectively
      */
+    @Suppress("DEPRECATION")
     private fun manageAudioFocus(getOrGiveUp: Boolean) {
         var audioFocusRequest: AudioFocusRequest? = null
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -112,6 +114,7 @@ class PlayTile: TileService(), AudioManager.OnAudioFocusChangeListener {
      */
     @SuppressLint("WakelockTimeout")
     private fun processPlayRequest() {
+        Log.i("Onpa-tile", "got a click")
         // Get preference values to set up stream
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         val ipAddress = sharedPreferences.getString("ip_pref", "0.0.0.0")!!
@@ -139,6 +142,7 @@ class PlayTile: TileService(), AudioManager.OnAudioFocusChangeListener {
      * processStopRequest function: Stops playback when the quick settings tile is tapped
      */
     private fun processStopRequest() {
+        Log.i("Onpa-tile", "pausing")
         // Give up audio focus
         manageAudioFocus(getOrGiveUp = false)
         // Terminate playback thread
@@ -184,6 +188,7 @@ class PlayTile: TileService(), AudioManager.OnAudioFocusChangeListener {
      */
     override fun onClick() {
         super.onClick()
+        Log.i("Onpa-tile", qsTile.state.toString())
         when(qsTile.state) {
             Tile.STATE_INACTIVE -> processPlayRequest()
             Tile.STATE_ACTIVE -> processStopRequest()
