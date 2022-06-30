@@ -7,7 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 
 class App: ComponentActivity() {
 
@@ -16,15 +15,9 @@ class App: ComponentActivity() {
 
         setContent {
             AppTheme {
-                Header()
                 HelloWorld()
             }
         }
-    }
-
-    @Composable
-    private fun Header() {
-        SmallTopAppBar(title = @Composable {Text("Onpa")})
     }
 
     @Composable
