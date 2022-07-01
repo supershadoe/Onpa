@@ -75,8 +75,8 @@ dependencyResolutionManagement {
                 "compose-material3", "androidx.compose.material3", "material3"
             ).versionRef("material3")
 
-            library("compose-ui-tooling", "androidx.compose.ui", ":ui-tooling")
-                .versionRef("material3")
+            library("compose-ui-tooling", "androidx.compose.ui", "ui-tooling")
+                .versionRef("material")
 
             bundle("libs-normal", listOf(
                 "activity-compose", "compose-ui", "compose-ui-tooling-preview",

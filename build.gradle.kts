@@ -31,10 +31,6 @@ android {
         }
     }
 
-    buildFeatures {
-        compose = true
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -54,9 +50,9 @@ aboutLibraries {
 }
 
 dependencies {
-    implementation(androidxLibs.bundle.libs)
+    implementation(androidxLibs.bundles.libs)
     implementation(googleLibs.material)
-    implementation(aboutLibrariesLibs.bundle.libs)
-    implementation(composeLibs.bundle.libs.normal)
-    debugImplementation(composeLibs.bundle.libs.debug)
+    implementation(aboutLibrariesLibs.bundles.libs)
+    implementation(composeLibs.bundles.libs.normal)
+    debugImplementation(composeLibs.bundles.libs.debug)
 }
