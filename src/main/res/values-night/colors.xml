@@ -2,6 +2,7 @@
 <resources>
 
     <!-- App colors for dark mode-->
+    <color name="colorSplash">#FF1C1B1F</color>
     <color name="colorPrimary">#B2121212</color>
     <color name="colorStatus">#B2121212</color>
     <color name="colorAccent">#FF03BAC5</color>

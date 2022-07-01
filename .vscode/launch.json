@@ -6,7 +6,7 @@
             "request": "launch",
             "name": "Android: Launch debug APK",
             "appSrcRoot": "${workspaceRoot}/src/main",
-            "apkFile": "${workspaceRoot}/build/outputs/apk/debug/app-debug.apk",
+            "apkFile": "${workspaceRoot}/build/outputs/apk/debug/Onpa-debug.apk",
             "adbPort": 5037
         },
         {

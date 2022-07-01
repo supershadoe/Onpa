@@ -30,9 +30,13 @@ dependencyResolutionManagement {
             library(
                 "preference-ktx", "androidx.preference:preference-ktx:1.2.0"
             )
+            library(
+                "splashscreen", "androidx.core:core-splashscreen:1.0.0-beta02"
+            )
 
             bundle("libs", listOf(
-                "appcompat", "core-ktx", "constrainedLayout", "preference-ktx"
+                "appcompat", "core-ktx", "constrainedLayout", "preference-ktx",
+                "splashscreen"
             ))
         }
 

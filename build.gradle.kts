@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "me.supershadoe.onpa"
         minSdk = 24
-        targetSdk =  31
+        targetSdk = 30
         versionCode = 5
         versionName = "1.0.0-new"
     }

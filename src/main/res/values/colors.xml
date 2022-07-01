@@ -2,6 +2,7 @@
 <resources>
 
     <!-- App colors for light mode -->
+    <color name="colorSplash">FFFFFBFE</color>
     <color name="colorPrimary">#FF2196F3</color>
     <color name="colorStatus">#FF3F51B5</color>
     <color name="colorAccent">#FFD81B60</color>

@@ -2,6 +2,7 @@
 
     <!-- App info -->
     <string name="app_name">Onpa</string>
+    <string name="play_button">Play button</string>
 
     <!-- Quick settings tile -->
     <string name="qs_label">Stream audio</string>
