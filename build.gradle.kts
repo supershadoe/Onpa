@@ -62,5 +62,4 @@ dependencies {
     implementation(googleLibs.material)
     implementation(aboutLibrariesLibs.bundles.libs)
     implementation(composeLibs.bundles.libs.normal)
-    debugImplementation(composeLibs.bundles.libs.debug)
 }

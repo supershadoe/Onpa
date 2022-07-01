@@ -65,24 +65,16 @@ dependencyResolutionManagement {
             library("compose-ui", "androidx.compose.ui", "ui")
                 .versionRef("material")
             library(
-                "compose-ui-tooling-preview",
-                "androidx.compose.ui", "ui-tooling-preview"
-            ).versionRef("material")
-            library(
                 "compose-material", "androidx.compose.material", "material"
             ).versionRef("material")
             library(
                 "compose-material3", "androidx.compose.material3", "material3"
             ).versionRef("material3")
 
-            library("compose-ui-tooling", "androidx.compose.ui", "ui-tooling")
-                .versionRef("material")
-
             bundle("libs-normal", listOf(
-                "activity-compose", "compose-ui", "compose-ui-tooling-preview",
-                "compose-material", "compose-material3"
+                "activity-compose", "compose-ui", "compose-material",
+                "compose-material3"
             ))
-            bundle("libs-debug", listOf("compose-ui-tooling"))
         }
     }
 }
