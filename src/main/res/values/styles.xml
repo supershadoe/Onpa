@@ -1,17 +1,9 @@
 <resources>
 
-    <style name="AppTheme.SplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/colorSplash</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+    <style name="Onpa.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splashBg</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_app_color</item>
         <item name="postSplashScreenTheme">@style/Theme.Material3.DayNight.NoActionBar</item>
     </style>
-
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">@color/colorStatus</item>
-    </style>
-
-    <style name="AppTheme.AboutLibraries" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 
 </resources>

@@ -21,29 +21,29 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("androidxLibs") {
-            library("appcompat", "androidx.appcompat:appcompat:1.4.2")
             library("core-ktx", "androidx.core:core-ktx:1.8.0")
-            library(
-                "constrainedLayout",
-                "androidx.constraintlayout:constraintlayout:2.1.4"
-            )
-            library(
-                "preference-ktx", "androidx.preference:preference-ktx:1.2.0"
+            library("datastore-prefs",
+                "androidx.datastore:datastore-preferences:1.0.0"
             )
             library(
                 "splashscreen", "androidx.core:core-splashscreen:1.0.0-beta02"
             )
 
             bundle("libs", listOf(
-                "appcompat", "core-ktx", "constrainedLayout", "preference-ktx",
-                "splashscreen"
+                "core-ktx", "datastore-prefs", "splashscreen"
             ))
         }
 
         create("googleLibs") {
+            version("accompanist", "0.24.13-rc")
             library(
                 "material", "com.google.android.material:material:1.7.0-alpha02"
             )
+            library(
+                "ac-systemuicontroller",
+                "com.google.accompanist", "accompanist-systemuicontroller"
+            ).versionRef("accompanist")
+            bundle("accompanist", listOf("ac-systemuicontroller"))
         }
 
         create("aboutLibrariesLibs") {
@@ -69,15 +69,11 @@ dependencyResolutionManagement {
             library("compose-ui", "androidx.compose.ui", "ui")
                 .versionRef("material")
             library(
-                "compose-material", "androidx.compose.material", "material"
-            ).versionRef("material")
-            library(
                 "compose-material3", "androidx.compose.material3", "material3"
             ).versionRef("material3")
 
             bundle("libs-normal", listOf(
-                "activity-compose", "compose-ui", "compose-material",
-                "compose-material3"
+                "activity-compose", "compose-ui", "compose-material3"
             ))
         }
     }

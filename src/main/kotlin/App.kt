@@ -1,54 +1,97 @@
 package me.supershadoe.onpa
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.BottomSheetScaffold
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.TopAppBarDefaults.smallTopAppBarColors
+import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import me.supershadoe.onpa.ui.Colors
 
 class App: ComponentActivity() {
 
-    @OptIn(ExperimentalMaterialApi::class)
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
         setContent {
+            var isPlaying: Boolean by remember { mutableStateOf(false) }
             AppTheme {
-                BottomSheetScaffold(
-                    sheetContent = {
-                        Text("test")
-                    },
-                    sheetBackgroundColor = MaterialTheme.colorScheme.primary,
-                    backgroundColor = MaterialTheme.colorScheme.background,
-                    floatingActionButton = {
-                        PlayPause {
-                            /* TODO */
-                        }
-                    }
-                ) {
-                    Text("test", color=MaterialTheme.colorScheme.onBackground)
+                val systemUiController = rememberSystemUiController()
+                val useDarkIcons = !isSystemInDarkTheme()
+                SideEffect {
+                    systemUiController.setSystemBarsColor(
+                        color = Color.Transparent,
+                        darkIcons = useDarkIcons
+                    )
                 }
+                Scaffold(
+                    topBar = { TopAppBar() },
+                    floatingActionButton = {
+                        PlayPause(isPlaying) {
+                            isPlaying = !isPlaying
+                        }
+                    },
+                    content = {}
+                )
             }
         }
     }
 
     @Composable
-    private fun PlayPause(onClickTask: () -> Unit) {
+    private fun TopAppBar() {
+        SmallTopAppBar(
+            title={
+                Text(
+                    text=stringResource(id = R.string.app_name)
+                )
+            },
+            colors = smallTopAppBarColors(
+                // The background isn't as smooth as light theme
+                // in dark theme
+                containerColor = MaterialTheme.colorScheme.background,
+                scrolledContainerColor = MaterialTheme.colorScheme.background
+            ),
+            actions = {
+                IconButton({}) {
+                    Icon(
+                        painter = painterResource(
+                            id = R.drawable.ic_info_button),
+                        contentDescription = stringResource(
+                            id = R.string.info_button
+                        )
+                    )
+                }
+            }
+        )
+    }
+
+    @Composable
+    private fun PlayPause(isPlaying: Boolean, onClickTask: () -> Unit) {
         FloatingActionButton(
-            onClick = onClickTask,
-            containerColor = MaterialTheme.colorScheme.surface,
+            onClick = onClickTask
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_play_arrow),
-                contentDescription = getString(R.string.play_button)
+                painter = painterResource(
+                    id =
+                        if (isPlaying) R.drawable.ic_pause_button
+                        else R.drawable.ic_play_button
+                ),
+                contentDescription = stringResource(
+                    id =
+                        if (isPlaying) R.string.pause_button
+                        else R.string.play_button
+                )
             )
         }
     }
@@ -56,34 +99,18 @@ class App: ComponentActivity() {
     @Composable
     private fun AppTheme(content: @Composable () -> Unit) {
         val overAPI31 = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-        val darkThemeM3 = darkColorScheme(
-            primary = Color(0xFFD0BCFF),
-            onPrimary = Color(0xFF381E72),
-            background = Color(0xFF1C1B1F),
-            onBackground = Color(0xFFE6E1E5),
-            surface = Color(0xFF313033),
-            onSurface = Color(0xFFE6E1E5)
-        )
-        val lightThemeM3 = lightColorScheme(
-            primary = Color(0xFF6750A4),
-            onPrimary = Color(0xFFFFFFFF),
-            background = Color(0xFFFFFBFE),
-            onBackground = Color(0xFF1C1B1F),
-            surface = Color(0xFFFFFBFE),
-            onSurface = Color(0xFF1C1B1F)
-        )
 
         // Honestly I have no clue how good this is because IDH an Android 12 device
         // nor do I care to run an emulator
         MaterialTheme(
             content = content,
             colorScheme =
-                if (isSystemInDarkTheme())
-                    if (overAPI31) dynamicDarkColorScheme(applicationContext)
-                    else darkThemeM3
-                else
-                    if (overAPI31) dynamicLightColorScheme(applicationContext)
-                    else lightThemeM3
+            if (isSystemInDarkTheme())
+                if (overAPI31) dynamicDarkColorScheme(applicationContext)
+                else Colors.darkThemeM3
+            else
+                if (overAPI31) dynamicLightColorScheme(applicationContext)
+                else Colors.lightThemeM3
         )
     }
 }

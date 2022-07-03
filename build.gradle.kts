@@ -60,6 +60,7 @@ aboutLibraries {
 dependencies {
     implementation(androidxLibs.bundles.libs)
     implementation(googleLibs.material)
+    implementation(googleLibs.bundles.accompanist)
     implementation(aboutLibrariesLibs.bundles.libs)
     implementation(composeLibs.bundles.libs.normal)
 }
