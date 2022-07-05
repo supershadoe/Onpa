@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2022 supershadoe <supershadoe@proton.me>
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 package me.supershadoe.onpa.ui
 
 import androidx.compose.material3.darkColorScheme

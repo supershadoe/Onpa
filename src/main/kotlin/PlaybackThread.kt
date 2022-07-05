@@ -1,19 +1,11 @@
 /*
+ * SPDX-FileCopyrightText: 2010 Ivan Lyapunov
+ * The threaded code for playback is almost based on Ivan's code for PulseDroid
+ * (https://github.com/dront78/pulsedroid -> GPL3 compatible with Apache 2 so
+ * no issues on using Apache I guess)
  *
- * Copyright (C) 2021 supershadoe
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
+ * SPDX-FileCopyrightText: 2020-2022 supershadoe <supershadoe@proton.me>
+ * SPDX-License-Identifier: Apache-2.0 OR GPL-3.0
  */
 
 package me.supershadoe.onpa
@@ -41,11 +33,11 @@ import java.net.Socket
  *                                   access applicationContext(and thus can't get system service)
  */
 internal class PlaybackThread(
-        private val ipAddress: String,
-        private val port: Int,
-        sampleRate: Int,
-        stereo: Boolean,
-        audioManager: AudioManager): Runnable {
+    audioManager: AudioManager,
+    val ipAddress: String = "0.0.0.0",
+    private val port: Int = 8000,
+    sampleRate: Int = 48000,
+    stereo: Boolean = true): Runnable {
 
     // Variable to denote if the thread needs to be terminated
     private var terminate: Boolean = false
