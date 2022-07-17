@@ -18,7 +18,6 @@ import android.os.Build
 import android.util.Log
 
 import java.io.IOException
-import java.io.InputStream
 import java.io.UnsupportedEncodingException
 import java.net.ConnectException
 import java.net.Socket
@@ -34,7 +33,7 @@ import java.net.Socket
  */
 internal class PlaybackThread(
     audioManager: AudioManager,
-    val ipAddress: String = "0.0.0.0",
+    val ipAddress: String = "192.168.1.100",
     private val port: Int = 8000,
     sampleRate: Int = 48000,
     stereo: Boolean = true): Runnable {
@@ -83,82 +82,42 @@ internal class PlaybackThread(
      * The function which processes the audio received from server and sends to AudioTrack
      */
     override fun run() {
-        // Declare sock(Socket) and audioData(InputStream)
-        var sock: Socket? = null
-        var audioData: InputStream? = null
-        val audioBuffer = ByteArray(minBufSize * 8)
-        Log.i("Onpa", "Called")
-        try {
-            // Try to create a socket to the server with the given IP Address using the provided port
-            sock = Socket(ipAddress, port)
-            Log.d("Onpa-pt", sock.toString())
-        } catch (e: ConnectException) {
-            // Connection refused
-            Log.d("Onpa-pt", ipAddress)
-            terminate()
-            e.printStackTrace()
-        } catch (e: IOException) {
-            // Error while creating a socket
-            Log.d("Onpa-pt", ipAddress)
-            terminate()
-            e.printStackTrace()
-        } catch (e: SecurityException) {
-            /*
-             * Exception thrown when a security manager(if it exists) denies permission to connect to
-             * given IP Address and port
-             */
-            terminate()
-            e.printStackTrace()
-        }
-        if (!terminate) {
-            try {
-                // Try to get audio stream from the server
-                audioData = sock!!.getInputStream()
-            } catch (e: UnsupportedEncodingException){
-                // Data is some unknown encoding
-                terminate()
-                e.printStackTrace()
-            } catch (e: IOException) {
-                // Some I/O error
-                terminate()
-                e.printStackTrace()
-            }
-        }
 
-        // Flush the audio buffer so that playback won't continue from previous run(Just a precaution)
-        audioTrack.flush()
-        // Start playback
-        audioTrack.play()
-        // A blocking loop which runs till the thread is terminated using terminate()
-        while (!terminate) {
-            try {
-                audioTrack.write(audioBuffer, 0,
-                        audioData!!.read(audioBuffer, 0, minBufSize * 8))
-            } catch (e: IOException) {
-                // Some I/O error
-                e.printStackTrace()
+        Log.i("Onpa", "Called PlaybackThread")
+        try {
+            val socket = Socket(ipAddress, port)
+            Log.d("Onpa-pt", socket.toString())
+            if (!terminate) {
+                val audioBuffer = ByteArray(minBufSize * 8)
+                with(audioTrack) {
+                    val audioData = socket.takeIf { it.isConnected }
+                        ?.getInputStream()
+
+                    play()
+
+                    while (!terminate) {
+                        write(audioBuffer, 0, audioData!!.read(audioBuffer, 0, minBufSize * 8))
+                    }
+
+                    pause(); flush(); release()
+
+                    socket.takeIf { it.isConnected }?.close()
+                }
             }
-        }
-        /*
-         * Pause, flush and release is used instead of stop and release as stop doesn't stop playback
-         * at once.
-         * And flush is done to clear the buffer so that the app doesn't play leftover audio from this
-         * time when the app is run the next time
-         */
-        audioTrack.pause()
-        audioTrack.flush()
-        audioTrack.release()
-        /*
-         * Closing the socket if it's still connected to prevent the app from making multiple connections
-         * to the server
-         */
-        if (sock != null && sock.isConnected) {
-            try {
-                // Close the socket
-                sock.close()
-            } catch (e: IOException) {
-                // Some I/O exception
-                e.printStackTrace()
+        } catch (e: Exception) {
+            when (e) {
+                is ConnectException, // Connection refused
+                is IOException, // Any IO Error
+                is SecurityException,
+                    // When security manager blocks connection to
+                    // given IP or port
+                is UnsupportedEncodingException
+                    // When the data received is not in required encoding
+                -> {
+                    terminate()
+                    e.printStackTrace()
+                }
+                else -> throw e
             }
         }
     }

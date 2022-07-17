@@ -28,9 +28,12 @@ dependencyResolutionManagement {
             library(
                 "splashscreen", "androidx.core:core-splashscreen:1.0.0-beta02"
             )
+            library(
+                "media", "androidx.media:media:1.2.0"
+            )
 
             bundle("libs", listOf(
-                "core-ktx", "datastore-prefs", "splashscreen"
+                "core-ktx", "datastore-prefs", "media", "splashscreen"
             ))
         }
 

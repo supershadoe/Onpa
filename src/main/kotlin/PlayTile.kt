@@ -16,15 +16,12 @@ import android.os.Build
 import android.os.PowerManager
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
+import androidx.annotation.RequiresApi
 
 /**
  * Main service which handles the audio playback and the quick setting tile
- *
- * Some of my thoughts:
- * Settled on quick setting tile as it makes life easier for both me and user.
- * Drawbacks are app can't be used by users who own Android devices with android version <7.0
- * And quick setting tile maybe useless for people who use this app once in a blue moon.
  */
+@RequiresApi(Build.VERSION_CODES.N)
 class PlayTile: TileService() {
 
     // Variable storing the current audio focus state

@@ -6,8 +6,13 @@
 package me.supershadoe.onpa
 
 import android.annotation.SuppressLint
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.ServiceConnection
 import android.os.Build
 import android.os.Bundle
+import android.os.IBinder
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -19,9 +24,25 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+
 import me.supershadoe.onpa.ui.Colors
 
-class App: ComponentActivity() {
+class OnpaAct: ComponentActivity() {
+
+    private lateinit var mediaService: MediaService
+    private var bound: Boolean = false
+
+    private val servConnection = object: ServiceConnection {
+        override fun onServiceConnected(name: ComponentName, service: IBinder) {
+            mediaService = (service as MediaService.LocalBinder).getService()
+            bound = true
+            TODO("Not yet implemented")
+        }
+
+        override fun onServiceDisconnected(name: ComponentName?) {
+            bound = false
+        }
+    }
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
@@ -51,6 +72,18 @@ class App: ComponentActivity() {
                 )
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Intent(this, MediaService::class.java).also {
+            bindService(it, servConnection, Context.BIND_AUTO_CREATE)
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        unbindService(servConnection)
     }
 
     @Composable
