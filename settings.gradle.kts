@@ -1,8 +1,8 @@
 pluginManagement {
     plugins {
-        id("com.android.application") version "7.2.1"
-        id("org.jetbrains.kotlin.android") version "1.7.0"
-        id("com.mikepenz.aboutlibraries.plugin") version "10.3.1"
+        id("com.android.application") version "7.2.2" apply false
+        id("org.jetbrains.kotlin.android") version "1.7.10" apply false
+        id("com.mikepenz.aboutlibraries.plugin") version "10.3.1" apply false
     }
     repositories {
         gradlePluginPortal()
@@ -11,7 +11,7 @@ pluginManagement {
         maven(url = "https://plugins.gradle.org/m2/")
     }
 }
-
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -22,25 +22,27 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("androidxLibs") {
             library("core-ktx", "androidx.core:core-ktx:1.8.0")
+            library("core-splashscreen",
+                "androidx.core:core-splashscreen:1.0.0-rc01"
+            )
             library("datastore-prefs",
                 "androidx.datastore:datastore-preferences:1.0.0"
             )
             library(
-                "splashscreen", "androidx.core:core-splashscreen:1.0.0-beta02"
-            )
-            library(
-                "media", "androidx.media:media:1.2.0"
+                "media", "androidx.media:media:1.6.0"
             )
 
             bundle("libs", listOf(
-                "core-ktx", "datastore-prefs", "media", "splashscreen"
+                "core-ktx", "core-splashscreen", "datastore-prefs", "media"
             ))
         }
 
         create("googleLibs") {
             version("accompanist", "0.24.13-rc")
-            library(
-                "material", "com.google.android.material:material:1.7.0-alpha02"
+
+            // This lib exists only for being used as post-SplashScreen theme
+            library("material",
+                "com.google.android.material:material:1.7.0-alpha03"
             )
             library(
                 "ac-systemuicontroller",
@@ -49,20 +51,16 @@ dependencyResolutionManagement {
             bundle("accompanist", listOf("ac-systemuicontroller"))
         }
 
-        create("aboutLibrariesLibs") {
+        create("aboutLibs") {
             // Also don't forget to change in plugins
-            version("aboutLibraries", "10.3.1")
+            version("aboutLibraries", "10.4.0")
 
-            library("core", "com.mikepenz", "aboutlibraries-compose")
+            library("core", "com.mikepenz", "aboutlibraries-core")
                 .versionRef("aboutLibraries")
-            library("compose", "com.mikepenz", "aboutlibraries-compose")
-                .versionRef("aboutLibraries")
-
-            bundle("libs", listOf("core", "compose"))
         }
 
         create("composeLibs") {
-            version("material", "1.2.0-rc03")
+            version("material", "1.3.0-alpha01")
             version("material3", "1.0.0-alpha14")
 
             library(

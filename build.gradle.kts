@@ -4,13 +4,14 @@ plugins {
     id("com.mikepenz.aboutlibraries.plugin")
 }
 
+@Suppress("UnstableApiUsage")
 android {
-    compileSdk = 32
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "me.supershadoe.onpa"
         minSdk = 23
-        targetSdk = 30
+        targetSdk = 33
         versionCode = 5
         versionName = "1.0.0-new"
     }
@@ -45,7 +46,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
+        kotlinCompilerExtensionVersion = "1.3.0-beta01"
     }
 
     kotlinOptions {
@@ -61,6 +62,6 @@ dependencies {
     implementation(androidxLibs.bundles.libs)
     implementation(googleLibs.material)
     implementation(googleLibs.bundles.accompanist)
-    implementation(aboutLibrariesLibs.bundles.libs)
+    implementation(aboutLibs.core)
     implementation(composeLibs.bundles.libs.normal)
 }

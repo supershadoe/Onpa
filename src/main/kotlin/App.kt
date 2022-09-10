@@ -135,6 +135,7 @@ class OnpaAct: ComponentActivity() {
     }
 
     @Composable
+    @SuppressLint("NewApi")
     private fun AppTheme(content: @Composable () -> Unit) {
         val overAPI31 = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
