@@ -23,7 +23,7 @@ dependencyResolutionManagement {
         create("androidxLibs") {
             library("core-ktx", "androidx.core:core-ktx:1.8.0")
             library("core-splashscreen",
-                "androidx.core:core-splashscreen:1.0.0-rc01"
+                "androidx.core:core-splashscreen:1.0.0"
             )
             library("datastore-prefs",
                 "androidx.datastore:datastore-preferences:1.0.0"
@@ -38,11 +38,11 @@ dependencyResolutionManagement {
         }
 
         create("googleLibs") {
-            version("accompanist", "0.24.13-rc")
+            version("accompanist", "0.26.3-beta")
 
             // This lib exists only for being used as post-SplashScreen theme
             library("material",
-                "com.google.android.material:material:1.7.0-alpha03"
+                "com.google.android.material:material:1.7.0-beta01"
             )
             library(
                 "ac-systemuicontroller",
@@ -60,12 +60,12 @@ dependencyResolutionManagement {
         }
 
         create("composeLibs") {
-            version("material", "1.3.0-alpha01")
-            version("material3", "1.0.0-alpha14")
+            version("material", "1.3.0-beta01")
+            version("material3", "1.0.0-beta01")
 
             library(
                 "activity-compose",
-                "androidx.activity:activity-compose:1.6.0-alpha05"
+                "androidx.activity:activity-compose:1.6.0-rc01"
             )
             library("compose-ui", "androidx.compose.ui", "ui")
                 .versionRef("material")

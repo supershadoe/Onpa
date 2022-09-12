@@ -36,7 +36,7 @@ class OnpaAct: ComponentActivity() {
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
             mediaService = (service as MediaService.LocalBinder).getService()
             bound = true
-            TODO("Not yet implemented")
+            // TODO("Not yet implemented")
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
@@ -86,6 +86,7 @@ class OnpaAct: ComponentActivity() {
         unbindService(servConnection)
     }
 
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     private fun TopAppBar() {
         SmallTopAppBar(
