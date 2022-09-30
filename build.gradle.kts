@@ -7,8 +7,10 @@ plugins {
 @Suppress("UnstableApiUsage")
 android {
     compileSdk = 33
+    namespace = "me.supershadoe.onpa"
 
     defaultConfig {
+        // Can ignore applicationId when using app id as namespace but used to using this ig
         applicationId = "me.supershadoe.onpa"
         minSdk = 23
         targetSdk = 33
