@@ -15,6 +15,7 @@
  * limitations under the License.
  *
  */
+// partially written by Ivan Lyapunov (@dront78) in 2010 under GPL3
 
 package me.supershadoe.onpa
 
